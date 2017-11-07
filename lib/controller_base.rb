@@ -9,33 +9,28 @@ class ControllerBase
   attr_reader :req, :res, :params
   attr_accessor :flash
 
-  # Setup the controller
   def initialize(req, res, route_params={})
     @req = req
     @res = res
-    @flash = Flash.new(req)
     @params = req.params.merge(route_params)
     @already_built_response = false
-    # self.session
   end
 
-  # Helper method to alias @already_built_response
+  # Helper method to check if resonse already returned
   def already_built_response?
     @already_built_response
   end
 
-  # Set the response status code and header
+  # set 302 response and update location
   def redirect_to(url)
     raise "Already delivered response" if self.already_built_response?
     res.status = 302
     res['Location'] = url
     @already_built_response = true
     self.session.store_session(res)
-    @flash.store_flash(res)
   end
 
-  # Populate the response with content.
-  # Set the response's content type to the given type.
+  # Set response content and content type
   # Raise an error if the developer tries to double render.
   def render_content(content, content_type)
     raise "Already delivered response" if self.already_built_response?
@@ -43,10 +38,11 @@ class ControllerBase
     res.write(content)
     @already_built_response = true
     self.session.store_session(res)
-    @flash.store_flash(res)
+
   end
 
   # use ERB and binding to evaluate templates
+  # rely on convention of view paths being "controller_name/template_name.html.erb"
   # pass the rendered html to render_content
   def render(template_name)
     controller_name = self.class.to_s.underscore
