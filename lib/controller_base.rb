@@ -38,7 +38,6 @@ class ControllerBase
     res.write(content)
     @already_built_response = true
     self.session.store_session(res)
-
   end
 
   # use ERB and binding to evaluate templates
