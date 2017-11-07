@@ -20,7 +20,7 @@ class ControllerBase
     @already_built_response
   end
 
-  # set 302 response and update location
+  # set 302 response and update location for redirect
   def redirect_to(url)
     raise "Already delivered response" if self.already_built_response?
     res.status = 302
@@ -41,9 +41,10 @@ class ControllerBase
     self.flash.store_flash(res)
   end
 
-  # use ERB and binding to evaluate templates
-  # rely on convention of view paths being "controller_name/template_name.html.erb"
-  # pass the rendered html to render_content
+  #rely on convention of view paths being "controller_name/template_name.html.erb"
+  #binding argument makes the file described in current scope with the controller and template names
+  #available to the ERB.new command along with any variables passed into the template
+  #pass the rendered html to render_content
   def render(template_name)
     controller_name = self.class.to_s.underscore
     filepath = "views/#{controller_name}/#{template_name}.html.erb"
