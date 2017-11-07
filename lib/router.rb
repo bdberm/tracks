@@ -42,13 +42,12 @@ class Router
     @routes = []
   end
 
-  # simply adds a new route to the list of routes
+
   def add_route(pattern, method, controller_class, action_name)
     @routes << Route.new(pattern, method, controller_class, action_name)
   end
 
-  #draw routes using the methods dynamically created below for the four
-  #http methods
+  #add routes using the methods dynamically created below within a block
   def draw(&proc)
     self.instance_eval(&proc)
   end
