@@ -52,7 +52,6 @@ class DogsController < ControllerBase
       flash[:notice] = "Saved dog successfully"
       redirect_to "/dogs"
     else
-      
       flash.now[:errors] = @dog.errors
       render :new
     end
