@@ -31,6 +31,6 @@ class Dog
     {name: self.name, owner: self.owner, breed: self.breed}
   end
 
-  
+
 
 end

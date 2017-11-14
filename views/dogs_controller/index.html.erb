@@ -1,10 +1,15 @@
 
 
-<h1>ALL THE DOGS</h1>
+<h1>Dogs Index</h1>
 
 <% if flash[:notice] %>
-  Notice: <%= flash[:notice] %>
+  Error: <%= flash[:notice] %>
 <% end %>
 
 <pre>Dog Data: <%= @dogs.to_s %></pre>
+<ul>
+  <% @dogs.each do  |dog|%>
+    <li>Name: <%= dog.name %>, Owner: <%= dog.owner %>, Breed: <%= dog.breed %></li>
+  <% end %>
+</ul>
 <a href="/dogs/new">New Dog!</a>
