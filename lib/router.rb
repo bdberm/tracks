@@ -1,3 +1,5 @@
+require_relative './controller_base'
+
 class Route
   attr_reader :pattern, :http_method, :controller_class, :action_name
 
@@ -78,8 +80,8 @@ class Router
     if route_to_run
       route_to_run.run(req, res)
     else
-      res.status = 404
-      res.write("No matching route found!")
+      not_found = Route.new("/not_found",'get', ControllerBase, :invalid_route)
+      not_found.run(req, res)
     end
   end
 end

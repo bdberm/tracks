@@ -20,6 +20,10 @@ class ControllerBase
     @already_built_response
   end
 
+  def invalid_route
+      render("not_found")
+  end
+
   # set 302 response and update location for redirect
   def redirect_to(url)
     raise "Already delivered response" if self.already_built_response?
@@ -55,7 +59,7 @@ class ControllerBase
     self.render_content(to_render, "text/html")
   end
 
-  # method exposing a `Session` object
+  # methods exposing 'session' and 'flash'
   def session
     @session ||= Session.new(@req)
   end
@@ -63,6 +67,8 @@ class ControllerBase
   def flash
     @flash ||= Flash.new(@req)
   end
+
+
 
   # use this with the router to call action_name (:index, :show, :create...)
   def invoke_action(name)
