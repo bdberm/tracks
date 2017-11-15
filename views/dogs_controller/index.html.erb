@@ -2,14 +2,19 @@
 
 <h1>Dogs Index</h1>
 
-<% if flash[:notice] %>
-  Error: <%= flash[:notice] %>
+<% if flash[:notify] %>
+  <%= flash[:notify] %>
 <% end %>
 
-<pre>Dog Data: <%= @dogs.to_s %></pre>
 <ul>
-  <% @dogs.each do  |dog|%>
-    <li>Name: <%= dog.name %>, Owner: <%= dog.owner %>, Breed: <%= dog.breed %></li>
+  <% @dogs.values.each do  |dog|%>
+    <% dog_url = "/dogs/#{dog.object_id}" %>
+    <li><a href=<%= dog_url %>>Name: <%= dog.name %></a>, Owner: <%= dog.owner %>, Breed: <%= dog.breed %></li>
+    <br>
+    <form action=<%= dog_url %> >
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="DELETE DOG">
+    </form>
   <% end %>
 </ul>
 <a href="/dogs/new">New Dog!</a>

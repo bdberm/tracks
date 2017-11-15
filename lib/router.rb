@@ -12,7 +12,8 @@ class Route
   # req http method matches route method
   def matches?(req)
     path = req.path
-    method = req.request_method
+    #use _method param to allow for deletion or edit from form
+    method = req.params["_method"] ? req.params["_method"] : req.request_method
 
     self.pattern =~ path && self.http_method == method.downcase.to_sym
 
