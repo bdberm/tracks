@@ -1,4 +1,5 @@
 require_relative './dog'
+require_relative './breed'
 require_relative '../../../lib/controller_base'
 
 class DogsController < ControllerBase
@@ -9,7 +10,7 @@ class DogsController < ControllerBase
 
   def create
     @dog  = Dog.new(params["dog"])
-    if @dog.save
+    if @dog.valid_save
       flash[:notify] = "New Dog Added!"
       redirect_to "/dogs"
     else

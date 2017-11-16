@@ -86,6 +86,7 @@ class SQLObject
 
   def save
     self.id.nil? ? insert : update
+    true
   end
 
 

@@ -4,17 +4,21 @@
   <% end %>
 <% end %>
 
+
 <form action="/dogs" method="POST">
   <label>Name
     <input type="text" name="dog[name]" value="<%= @dog.name %>">
   </label>
   <br>
   <label>Owner
-    <input type="text" name="dog[owner]" value="<%= @dog.owner %>">
+    <select name="dog[owner_id]">
+      <option>Please Select</option>
+      
+    </select>
   </label>
   <br>
   <label>Breed
-    <input type="text" name="dog[breed]" value="<%= @dog.breed %>">
+    <input type="text" name="dog[breed_id]" value="<%= @dog.breed_id %>">
   </label>
 
   <input type="submit">
