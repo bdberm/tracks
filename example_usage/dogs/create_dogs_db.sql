@@ -4,16 +4,16 @@ CREATE TABLE dogs (
   breed_id INTEGER NOT NULL,
   owner_id INTEGER NOT NULL,
 
-  FOREIGN KEY(breed__id) REFERENCES breed(id),
+  FOREIGN KEY(breed_id) REFERENCES breed(id),
   FOREIGN KEY(owner_id) REFERENCES owner(id)
 );
 
 CREATE TABLE owners (
   id INTEGER PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE breeds (
   id INTEGER PRIMARY KEY,
   name VARCHAR(255) NOT NULL
-)
+);
