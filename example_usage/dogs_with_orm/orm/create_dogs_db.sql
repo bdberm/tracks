@@ -64,7 +64,7 @@ VALUES
   (3, "Eleven"),
   (4, "Lucas"),
   (5, "Dustin"),
-  (6, "Neil"),
+  (6, "Hopper"),
   (7, "Jonathan"),
   (8, "Nancy"),
   (9, "Steve"),

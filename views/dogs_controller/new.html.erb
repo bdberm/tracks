@@ -13,13 +13,20 @@
   <label>Owner
     <select name="dog[owner_id]">
       <option>Please Select</option>
-      
+      <% @owners.each do |owner| %>
+        <option value=<%= owner.id %>><%= owner.name %></option>
+      <% end %>
     </select>
   </label>
   <br>
   <label>Breed
-    <input type="text" name="dog[breed_id]" value="<%= @dog.breed_id %>">
+    <select name="dog[breed_id]">
+      <option>Please Select</option>
+      <% @breeds.each do |breed| %>
+        <option value=<%= breed.id %>><%= breed.name %></option>
+      <% end %>
+    </select>
   </label>
-
+  <br>
   <input type="submit">
 </form>

@@ -15,6 +15,8 @@ class DogsController < ControllerBase
       redirect_to "/dogs"
     else
       flash.now[:errors] = @dog.errors
+      @breeds = Breed.all
+      @owners = Owner.all
       render :new
     end
   end

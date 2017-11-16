@@ -5,7 +5,6 @@ require_relative 'db_connection'
 require_relative './modules/associatable'
 require_relative './modules/searchable'
 require 'active_support/inflector'
-require 'byebug'
 
 class SQLObject
 

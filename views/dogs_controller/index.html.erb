@@ -6,6 +6,8 @@
   <%= flash[:notify] %>
 <% end %>
 
+<a href="/dogs/new">Add New Dog!</a>
+
 <ul>
   <% @dogs.each do  |dog|%>
     <% dog_url = "/dogs/#{dog.id}" %>

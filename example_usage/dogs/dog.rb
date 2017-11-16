@@ -1,5 +1,3 @@
-require 'byebug'
-
 class Dog
   attr_reader :name, :owner, :breed
   attr_accessor :errors
@@ -14,7 +12,7 @@ class Dog
     @owner = params["owner"]
     @breed = params["breed"]
     @errors = []
-    
+
   end
 
   def valid?
