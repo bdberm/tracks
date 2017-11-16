@@ -25,3 +25,12 @@ end
 When the router takes in a request, it matches the method against its existing routes and invokes the controller actions accordingly. If no route is found it invokes the "invlaid_route" method of ControllerBase.
 
 To allow HTML forms to send PATCH or DELETE requests on submit, the route matching checks for params["\_method"]. The creator of the application can add hidden inputs with the name attribute set to "\_method" and the value attribute set to the HTTP method desired
+
+### Session and Flash
+ControllerBase has the ability to set both session and flash cookies in the user's browser. The Flash functionality supports both flash[:cookie] which persists the cookie for one and only one additional request response cycle, and flash now which persists data only for the current cycle without storing any cookies.
+
+### Error Handling
+I included a middleware called ShowExceptions that filters incoming requests. If the request returns a 500 Internal Server Error, the middleware will display the error message and the top of the stack trace to the user via the `rescue.html.erb` template
+
+### Basic Demo
+A rudimentary demo application is included in the `example_usage` directory. It includes a `dog.rb` class, and `dogs_controller`. The views for the controller are located in the `views/dogs_controller` directory. The demo allows a user to view an index of all dogs, create a new dog, delete a dog and view each dog's show page. To run the demo on localhost/3000 simply, navigate to the root directory, run bundle install, then run `ruby example_usage/app.rb` in the command line.
