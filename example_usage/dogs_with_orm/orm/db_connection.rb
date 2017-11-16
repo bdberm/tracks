@@ -23,7 +23,7 @@ class DBConnection
       "cat '#{DOGS_SQL_FILE}' | sqlite3 '#{DOGS_DB_FILE}'"
     ]
 
-    commands.each { |command| `#{command}` }
+    commands.each { |command| `#{command}` } unless File.exists?(DOGS_DB_FILE)
     DBConnection.open(DOGS_DB_FILE)
   end
 
@@ -34,7 +34,7 @@ class DBConnection
   end
 
   def self.execute(*args)
-    
+
     print_query(*args)
     instance.execute(*args)
   end

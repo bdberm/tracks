@@ -88,6 +88,16 @@ class SQLObject
     self.id.nil? ? insert : update
   end
 
+
+  def destroy
+    DBConnection.execute(<<-SQL, self.id)
+      DELETE FROM
+        #{self.class.table_name}
+      WHERE
+        id = ?
+    SQL
+  end
+
   private
 
   def insert

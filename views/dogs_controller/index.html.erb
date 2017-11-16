@@ -7,9 +7,9 @@
 <% end %>
 
 <ul>
-  <% @dogs.values.each do  |dog|%>
-    <% dog_url = "/dogs/#{dog.object_id}" %>
-    <li><a href=<%= dog_url %>>Name: <%= dog.name %></a>, Owner: <%= dog.owner %>, Breed: <%= dog.breed %></li>
+  <% @dogs.each do  |dog|%>
+    <% dog_url = "/dogs/#{dog.id}" %>
+    <li><a href=<%= dog_url %>>Name: <%= dog.name %></a>, Owner: <%= dog.owner.name %>, Breed: <%= dog.breed.name %></li>
     <br>
     <form action=<%= dog_url %> >
       <input type="hidden" name="_method" value="delete">

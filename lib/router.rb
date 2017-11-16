@@ -1,4 +1,5 @@
 require_relative './controller_base'
+require 'byebug'
 
 class Route
   attr_reader :pattern, :http_method, :controller_class, :action_name
@@ -68,6 +69,7 @@ class Router
   end
 
   def match(req)
+    
     @routes.each do |route|
       return route if route.matches?(req)
     end
