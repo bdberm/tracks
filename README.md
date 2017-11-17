@@ -2,7 +2,7 @@
 
 ## Overview
 
-Tracks is a lightweight MVC framework built in Ruby. It utilizes the [RACK webserver interface](https://github.com/rack/rack) to respond to HTTP requests and with responses that render HTML templates populated by model data to the user.
+Tracks is a lightweight MVC framework built in Ruby. It utilizes the [RACK webserver interface](https://github.com/rack/rack) to respond to HTTP requests with responses that render HTML templates populated by model data to the user.
 
 ## Features
 
