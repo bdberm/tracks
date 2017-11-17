@@ -32,5 +32,10 @@ ControllerBase has the ability to set both session and flash cookies in the user
 ### Error Handling
 I included a middleware called ShowExceptions that filters incoming requests. If the request returns a 500 Internal Server Error, the middleware will display the error message and the top of the stack trace to the user via the `rescue.html.erb` template
 
+### ORM
+The demo utilizes an object relational mapping tool that allows entires in the database to be manipulated as Ruby objects. The ORM tool was developed by [Ethan Schneider](https://github.com/ethannkschneider), and the Github repo can be found [here](https://github.com/ethannkschneider/wORMhole).
+
+Each database table is modeled as a Ruby class that inherits from `SQLObject`. Each instance of `SQLObject` represents a (potential) entry in the database. Using core concepts from meta-programming, the `SQLObject` class dynamically generates getter and setter methods for columns in the database.
+
 ### Basic Demo
 A rudimentary demo application is included in the `example_usage` directory. It includes a `dog.rb` class, and `dogs_controller`. The views for the controller are located in the `views/dogs_controller` directory. The demo allows a user to view an index of all dogs, create a new dog, delete a dog and view each dog's show page. To run the demo on localhost/3000 simply, navigate to the root directory, run bundle install, then run `ruby example_usage/app.rb` in the command line.
