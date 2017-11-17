@@ -56,12 +56,6 @@ class Router
     self.instance_eval(&proc)
   end
 
-  #make instance method for each of the four http methods
-  #method takes arguments for pattern, controller, and action_name
-  #creates new route with those three arguments and the http method
-  #i.e. get(Regexp.new("^/recipes$", RecipesController, :index)) will
-  #create a route for /recipes, with http method get that routes to
-  #the RecipesController and the action index within it
   [:get, :post, :put, :delete].each do |http_method|
     define_method(http_method) do |pattern, controller_class, action_name|
        add_route(pattern, http_method, controller_class, action_name)
@@ -69,7 +63,7 @@ class Router
   end
 
   def match(req)
-    
+
     @routes.each do |route|
       return route if route.matches?(req)
     end
